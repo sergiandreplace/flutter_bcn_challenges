@@ -1,8 +1,7 @@
 # challenge_0
 
-A new Flutter application.
+Sample challenge
 
 ## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+From https://www.uplabs.com/posts/material-designed-profile-app
