@@ -1,3 +1,4 @@
+import 'package:challenge_0/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
@@ -6,10 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: new ThemeData(
-        primarySwatch: Colors.indigo,
-        brightness: Brightness.dark,
-      ),
+      theme: appTheme,
       home: new HomePage(),
     );
   }
@@ -27,7 +25,6 @@ class HomePage extends StatelessWidget {
   AppBar _appBar() => new AppBar(
         title: new Text("Profile"),
         elevation: 0.0,
-        backgroundColor: Colors.indigo[700],
         leading: new IconButton(onPressed: () {}, icon: new Icon(Icons.menu)),
         actions: <Widget>[
           new IconButton(onPressed: () {}, icon: new Icon(Icons.search)),
@@ -36,46 +33,65 @@ class HomePage extends StatelessWidget {
 }
 
 class HomeBody extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      color: Colors.indigo,
-      constraints: new BoxConstraints.expand(),
-      child: new Column(
-        children: <Widget>[
-          _options(),
-          _avatar(),
-          _profileName(),
-          _profileBio(),
-          _profileData(),
-          _followButton()
-        ],
+    return new ListView(
+      children: <Widget>[
+        _options(),
+        _avatar(),
+        _profileName(),
+        _profileBio(),
+        _profileData(),
+        _followButton()
+      ],
+    );
+  }
+
+  Row _options() {
+    return new Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        new IconButton(icon: new Icon(Icons.mail), onPressed: () {}),
+        new IconButton(icon: new Icon(Icons.more_vert), onPressed: () {})
+      ],
+    );
+  }
+
+  Widget _avatar() {
+    return new Center(
+      child: new Padding(
+        padding: new EdgeInsets.symmetric(vertical: 16.0),
+        child: new CircleAvatar(
+          radius: 60.0,
+          backgroundImage: new AssetImage(
+            "profile.jpg",
+          ),
+        ),
       ),
     );
   }
 
-  Padding _followButton() {
+  Text _profileName() {
+    return new Text(
+      "Eric Schmidt",
+      style: AppTextStyles.profileName,
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Padding _profileBio() {
     return new Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: 32.0, horizontal: 42.0),
-          child: new Container(
-            constraints: new BoxConstraints.expand(height: 48.0),
-            child: new FlatButton.icon(
-                icon: new Icon(Icons.person_outline),
-                color: Colors.indigo[200],
-                onPressed: () {},
-                label: new Text(
-                  "Follow",
-                  style: new TextStyle(fontSize: 16.0),
-                )),
-          ),
-        );
+      padding: const EdgeInsets.fromLTRB(54.0, 8.0, 54.0, 32.0),
+      child: new Text(
+        "Snowboarder, superhero and writer. Sometimes I work at Google as Executive Chairman",
+        textAlign: TextAlign.center,
+        style: AppTextStyles.profileBio,
+      ),
+    );
   }
 
   Container _profileData() {
-    var borderSide = new BorderSide(color: Colors.white24, width: 2.0);
+    var borderSide = new BorderSide(color: AppColors.borderColor, width: 2.0);
     return new Container(
       decoration: new BoxDecoration(
         border: new Border(
@@ -103,61 +119,32 @@ class HomeBody extends StatelessWidget {
             children: <Widget>[
               new Text(
                 new DefaultMaterialLocalizations().formatDecimal(amount),
-                style: new TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                    height: 1.6,
-                    color: Colors.white70),
+                style: AppTextStyles.socialInfoAmount,
               ),
               new Text(
                 name.toUpperCase(),
-                style: new TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                    height: 1.6,
-                    color: Colors.white30),
+                style: AppTextStyles.socialInfoName,
               ),
             ],
           ),
         ),
       );
 
-  Padding _profileBio() {
+  Padding _followButton() {
     return new Padding(
-      padding: const EdgeInsets.fromLTRB(54.0, 8.0, 54.0, 32.0),
-      child: new Text(
-        "Snowboarder, superhero and writer. Sometimes I work at Google as Executive Chairman",
-        textAlign: TextAlign.center,
-        style: new TextStyle(
-            fontSize: 18.0, fontWeight: FontWeight.w400, height: 1.2),
+      padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 42.0),
+      child: new SizedBox(
+        height: 48.0,
+        width: double.infinity,
+        child: new FlatButton.icon(
+            icon: new Icon(Icons.person_outline),
+            color: AppColors.buttonColor,
+            onPressed: () {},
+            label: new Text(
+              "Follow",
+              style: AppTextStyles.button,
+            )),
       ),
-    );
-  }
-
-  Text _profileName() {
-    return new Text(
-      "Eric Schmidt",
-      style: new TextStyle(fontSize: 48.0, fontWeight: FontWeight.w300),
-    );
-  }
-
-  Padding _avatar() {
-    return new Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: new CircleAvatar(
-        backgroundImage: new AssetImage("profile.jpg"),
-        maxRadius: 60.0,
-      ),
-    );
-  }
-
-  Row _options() {
-    return new Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        new IconButton(icon: new Icon(Icons.mail), onPressed: () {}),
-        new IconButton(icon: new Icon(Icons.more_vert), onPressed: () {})
-      ],
     );
   }
 }
