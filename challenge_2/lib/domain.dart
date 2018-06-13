@@ -48,9 +48,9 @@ class Scenery {
 }
 
 final scenery = [
-  Scenery(1, "Build Scenery", "Venice", 414.75, 34.3, "The necks of the Loch Ness monster-like marine...", "build.jpg", Colors.orange),
-  Scenery(2, "Natural Scenery", "Venice", 414.75, 34.3, "The necks of the Loch Ness monster-like marine...", "natural.jpg", Colors.lightBlue),
-  Scenery(3, "Famous Scenery", "Venice", 414.75, 34.3, "The necks of the Loch Ness monster-like marine...", "famous.jpg", Colors.pink),
+  Scenery(1, "Build Scenery", "Venice", 414.75, 34.3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut erat lectus, ultricies vitae suscipit id, ultricies sit amet leo. Proin sem ex, efficitur ut vehicula et, rhoncus vitae diam. Donec maximus nisl et fringilla ullamcorper. Cras ut neque non sapien egestas accumsan. Phasellus condimentum arcu in urna placerat, et ultrices ligula ullamcorper. Duis posuere ante non ultricies sollicitudin. Nulla mollis tellus dui, id pulvinar risus tempus nec.", "build.jpg", Colors.orange),
+  Scenery(2, "Natural Scenery", "Venice", 414.75, 34.3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut erat lectus, ultricies vitae suscipit id, ultricies sit amet leo. Proin sem ex, efficitur ut vehicula et, rhoncus vitae diam. Donec maximus nisl et fringilla ullamcorper. Cras ut neque non sapien egestas accumsan. Phasellus condimentum arcu in urna placerat, et ultrices ligula ullamcorper. Duis posuere ante non ultricies sollicitudin. Nulla mollis tellus dui, id pulvinar risus tempus nec.", "natural.jpg", Colors.lightBlue),
+  Scenery(3, "Famous Scenery", "Venice", 414.75, 34.3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut erat lectus, ultricies vitae suscipit id, ultricies sit amet leo. Proin sem ex, efficitur ut vehicula et, rhoncus vitae diam. Donec maximus nisl et fringilla ullamcorper. Cras ut neque non sapien egestas accumsan. Phasellus condimentum arcu in urna placerat, et ultrices ligula ullamcorper. Duis posuere ante non ultricies sollicitudin. Nulla mollis tellus dui, id pulvinar risus tempus nec.", "famous.jpg", Colors.pink),
 ];
 
 final Place venice = Place("Venice",[

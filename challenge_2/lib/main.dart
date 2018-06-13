@@ -88,8 +88,11 @@ class SceneryRow extends StatelessWidget {
                   ? Alignment.centerLeft
                   : Alignment.centerRight,
               widthFactor: 0.75,
-              child: new TitleBox(
-                  titleAlignment: titleAlignment, scenery: scenery),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                child: new TitleBox(
+                    titleAlignment: titleAlignment, scenery: scenery),
+              ),
             )
           ],
         ),
@@ -132,16 +135,114 @@ class SceneryDetailBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(0.0), //check: https://github.com/flutter/flutter/issues/14842
+      padding: EdgeInsets.all(0.0),
+      //check: https://github.com/flutter/flutter/issues/14842
       children: <Widget>[
         Container(
           height: 240.0,
           child: SceneryImage(scenery: scenery),
         ),
-        Container(
-          height: 500.0,
-        ),
+        new TitleCard(scenery: scenery),
+        new DescriptionCard(scenery: scenery),
       ],
+    );
+  }
+}
+
+class TitleCard extends StatelessWidget {
+  TitleCard({
+    Key key,
+    @required this.scenery,
+  }) : super(key: key);
+
+  final Scenery scenery;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme style = Theme.of(context).textTheme;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      height: 200.0,
+      child: Card(
+        elevation: 5.0,
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("${scenery.area}", style: style.title),
+                    Text("Area"),
+                    Text("${scenery.population}", style: style.title),
+                    Text("Population")
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: TitleBox(
+                  titleAlignment: TitleAlignment.right, scenery: scenery),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DescriptionCard extends StatelessWidget {
+  final Scenery scenery;
+
+  const DescriptionCard({Key key, this.scenery}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme style = Theme.of(context).textTheme;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      child: Card(
+        elevation: 5.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Container(
+                    width: 4.0,
+                    height: 16.0,
+                    color: scenery.color,
+                    margin: EdgeInsets.only(right: 8.0),
+
+                  ),
+                  Text(
+                    scenery.title,
+                    style: style.title,
+                  )
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Container(
+                    width: 4.0,
+                    height: 16.0,
+                    margin: EdgeInsets.only(right: 8.0),
+                  ),
+                  Text(scenery.city, style: style.subhead)
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16.0),
+                child: Text(scenery.description),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -182,9 +283,8 @@ class TitleBox extends StatelessWidget {
       tag: "titleBox-${scenery.id}",
       child: Container(
         padding: EdgeInsets.only(
-            left: titleAlignment == TitleAlignment.left ? 64.0 : 32.0),
+            left: titleAlignment == TitleAlignment.left ? 36.0 : 36.0),
         color: scenery.color.withOpacity(0.8),
-        margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
