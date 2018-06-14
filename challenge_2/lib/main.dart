@@ -1,5 +1,6 @@
 import 'package:challenge_2/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 
 void main() => runApp(new MyApp());
 
