@@ -1,4 +1,5 @@
 import 'package:challenge_2/domain.dart';
+import 'package:challenge_2/transitions.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
@@ -68,7 +69,7 @@ class SceneryRow extends StatelessWidget {
       child: InkWell(
         onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(
+              FadePageRoute(
                 builder: (context) => new SceneryDetailPage(scenery),
               ),
             ),
@@ -217,7 +218,6 @@ class DescriptionCard extends StatelessWidget {
                     height: 16.0,
                     color: scenery.color,
                     margin: EdgeInsets.only(right: 8.0),
-
                   ),
                   Text(
                     scenery.title,
